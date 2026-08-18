@@ -254,7 +254,7 @@ end
 
 net.Receive("ixDoorPermission", function(length, client)
 	local door = net.ReadEntity()
-	local target = net.ReadEntity()
+	local target = net.ReadPlayer()
 	local access = net.ReadUInt(4)
 
 	if (IsValid(door) and door:IsDoor() and IsValid(target) and target:IsPlayer() and target:GetCharacter()
@@ -278,7 +278,7 @@ net.Receive("ixDoorPermission", function(length, client)
 		if (#recipient > 0) then
 			net.Start("ixDoorPermission")
 				net.WriteEntity(door)
-				net.WriteEntity(target)
+				net.WritePlayer(target)
 				net.WriteUInt(access, 4)
 			net.Send(recipient)
 		end

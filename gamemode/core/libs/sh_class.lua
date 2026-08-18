@@ -237,7 +237,7 @@ if (SERVER) then
 		end
 
 		net.Start("ixClassUpdate")
-			net.WriteEntity(client)
+			net.WritePlayer(client)
 		net.Broadcast()
 	end
 end

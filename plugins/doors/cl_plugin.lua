@@ -185,7 +185,7 @@ net.Receive("ixDoorPermission", function()
 		return
 	end
 
-	local target = net.ReadEntity()
+	local target = net.ReadPlayer()
 	local access = net.ReadUInt(4)
 
 	local panel = door.ixPanel

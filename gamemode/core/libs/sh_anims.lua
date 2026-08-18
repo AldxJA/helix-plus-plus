@@ -425,7 +425,7 @@ if (SERVER) then
 
 		if (!sequence) then
 			net.Start("ixSequenceReset")
-				net.WriteEntity(self)
+				net.WritePlayer(self)
 			net.Broadcast()
 
 			return
@@ -456,7 +456,7 @@ if (SERVER) then
 			end
 
 			net.Start("ixSequenceSet")
-				net.WriteEntity(self)
+				net.WritePlayer(self)
 			net.Broadcast()
 
 			return time
@@ -473,7 +473,7 @@ if (SERVER) then
 		hook.Run("PlayerLeaveSequence", self)
 
 		net.Start("ixSequenceReset")
-			net.WriteEntity(self)
+			net.WritePlayer(self)
 		net.Broadcast()
 
 		self:SetNetVar("canShoot", self.ixCouldShoot)
@@ -487,7 +487,7 @@ if (SERVER) then
 	end
 else
 	net.Receive("ixSequenceSet", function()
-		local entity = net.ReadEntity()
+		local entity = net.ReadPlayer()
 
 		if (IsValid(entity)) then
 			hook.Run("PlayerEnterSequence", entity)
@@ -495,7 +495,7 @@ else
 	end)
 
 	net.Receive("ixSequenceReset", function()
-		local entity = net.ReadEntity()
+		local entity = net.ReadPlayer()
 
 		if (IsValid(entity)) then
 			hook.Run("PlayerLeaveSequence", entity)
